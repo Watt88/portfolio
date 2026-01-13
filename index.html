@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Евгений Аксенов | Медиа Художник</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Noise Overlays - Living Textures -->
+    <div class="noise-overlay"></div>
+    <div class="grain-overlay"></div>
+
+    <!-- Cursor Follower -->
+    <div class="cursor-follower"></div>
+
+    <!-- WebGL Fluid Morphing Canvas -->
+    <canvas id="fluidMorphCanvas" class="fluid-morph-canvas"></canvas>
+
+    <!-- SVG Filters for Text Distortion -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+            <filter id="fluidDistort">
+                <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="3" result="noise" seed="1"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__logo">
+            <span class="logo-text scramble-text" data-scramble="Евгений Аксенов">
+                <span class="logo-char" data-char="Е">Е</span><span class="logo-char" data-char="в">в</span><span class="logo-char" data-char="г">г</span><span class="logo-char" data-char="е">е</span><span class="logo-char" data-char="н">н</span><span class="logo-char" data-char="и">и</span><span class="logo-char" data-char="й">й</span><span class="logo-char space"> </span><span class="logo-char" data-char="А">А</span><span class="logo-char" data-char="к">к</span><span class="logo-char" data-char="с">с</span><span class="logo-char" data-char="е">е</span><span class="logo-char" data-char="н">н</span><span class="logo-char" data-char="о">о</span><span class="logo-char" data-char="в">в</span>
+            </span>
+        </div>
+        <div class="nav__menu">
+            <a href="#home" class="nav__link" data-hover="Главная">Главная</a>
+            <a href="#works" class="nav__link" data-hover="Генератив">Генератив</a>
+            <a href="#about" class="nav__link" data-hover="Био">Био</a>
+            <a href="#contact" class="nav__link" data-hover="Контакты">Контакты</a>
+        </div>
+        <div class="nav__actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-toggle__inner"></span>
+            </button>
+        </div>
+        <div class="nav__hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero__content">
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works">
+        <article class="work-card" data-tilt>
+            <div class="work-card__image">
+                <video class="work-video" autoplay muted loop playsinline data-video>
+                    <source src="media/video/Ai-Organic.mp4" type="video/mp4">
+                </video>
+                <div class="work-overlay"></div>
+            </div>
+            <div class="work-card__content">
+                <span class="work-category">AI Art</span>
+                <h3 class="work-title">Ai Organic</h3>
+                <p class="work-description">Искусственный интеллект и органические формы</p>
+            </div>
+        </article>
+
+        <article class="work-card" data-tilt>
+            <div class="work-card__image">
+                <video class="work-video" autoplay muted loop playsinline data-video>
+                    <source src="media/video/Ai-Pessimism.mp4" type="video/mp4">
+                </video>
+                <div class="work-overlay"></div>
+            </div>
+            <div class="work-card__content">
+                <span class="work-category">AI Art</span>
+                <h3 class="work-title">Ai Pessimism</h3>
+                <p class="work-description">Нейросетевой пессимизм</p>
+            </div>
+        </article>
+
+        <article class="work-card" data-tilt>
+            <div class="work-card__image">
+                <video class="work-video" autoplay muted loop playsinline data-video>
+                    <source src="media/video/Fluid.3.mov" type="video/mp4">
+                    <source src="media/video/Fluid.3.mov" type="video/quicktime">
+                </video>
+                <div class="work-overlay"></div>
+            </div>
+            <div class="work-card__content">
+                <span class="work-category">Generative</span>
+                <h3 class="work-title">Fluid</h3>
+                <p class="work-description">Жидкостная симуляция</p>
+            </div>
+        </article>
+
+        <article class="work-card" data-tilt>
+            <div class="work-card__image">
+                <video class="work-video" autoplay muted loop playsinline data-video>
+                    <source src="media/video/Wave Pop.0.mp4" type="video/mp4">
+                </video>
+                <div class="work-overlay"></div>
+            </div>
+            <div class="work-card__content">
+                <span class="work-category">Generative</span>
+                <h3 class="work-title">Wave Pop</h3>
+                <p class="work-description">Волновая генеративная анимация</p>
+            </div>
+        </article>
+
+        <article class="work-card" data-tilt>
+            <div class="work-card__image">
+                <video class="work-video" autoplay muted loop playsinline data-video>
+                    <source src="media/video/Glitch_neuro.2.mov" type="video/mp4">
+                    <source src="media/video/Glitch_neuro.2.mov" type="video/quicktime">
+                </video>
+                <div class="work-overlay"></div>
+            </div>
+            <div class="work-card__content">
+                <span class="work-category">AI Art</span>
+                <h3 class="work-title">Glitch Neuro</h3>
+                <p class="work-description">Нейросетевой глитч</p>
+            </div>
+        </article>
+
+        <article class="work-card" data-tilt>
+            <div class="work-card__image">
+                <video class="work-video" autoplay muted loop playsinline data-video>
+                    <source src="media/video/kinect_grid.mp4" type="video/mp4">
+                </video>
+                <div class="work-overlay"></div>
+            </div>
+            <div class="work-card__content">
+                <span class="work-category">Interactive</span>
+                <h3 class="work-title">Kinect Grid</h3>
+                <p class="work-description">Интерактивная сетка Kinect</p>
+            </div>
+        </article>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about__container">
+            <div class="about__visual">
+                <div class="about-avatar">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-content">
+                        <img src="media/image/photo_2025-10-21_00-05-33.jpg" alt="Евгений Аксенов" class="avatar-image">
+                    </div>
+                </div>
+            </div>
+            <div class="about__content">
+                <h2 class="section-title kinetic-text" data-kinetic="section">
+                    <span class="title-line kinetic-char" data-char="Б">Б</span><span class="title-line kinetic-char" data-char="и">и</span><span class="title-line kinetic-char" data-char="о">о</span>
+                </h2>
+                <div class="about-text">
+                    <p class="about-paragraph">
+                        Медиа-художник, работающий в области генеративного и интерактивного искусства. В своей практике объединяю алгоритмическое изображение, мультимедийные среды и перформативные формы. Использую TouchDesigner, PureData, Max, vvvv, Кастомные нейросетевые пайплайны, а также кастомные аппаратные решения и сенсорные системы.
+                    </p>
+                    <p class="about-paragraph">
+                        Художественный интерес сосредоточен на исследовании границ восприятия, визуальной нестабильности и иллюзорных структур, возникающих во взаимодействии человека и технологических процессов. В проектах технология рассматривается не только как средство производства изображения, но как активный участник художественного события.
+                    </p>
+                    <p class="about-paragraph">
+                        Работы часто строятся вокруг света, эффектов восприятия, звуковых свойств пространства, создавая опыт соучастия и созидания. В качестве художника исследую трепет перед машинным, мистичности технологий и их неизбежное присутствие в современном опыте.
+                    </p>
+                    <p class="about-paragraph">
+                        Проекты реализуются в формате мультимедийных инсталляций, live-перформансов и выставочных объектов. В настоящее время сосредоточен на разработке интерактивных сред и систем расширяющих возможности творческого взаимодействия с современным информационным полем и его вызовами.
+                    </p>
+                </div>
+                <div class="about-skills">
+                    <span class="skill-tag">TouchDesigner</span>
+                    <span class="skill-tag">Processing</span>
+                    <span class="skill-tag">WebGL</span>
+                    <span class="skill-tag">Three.js</span>
+                    <span class="skill-tag">GLSL</span>
+                    <span class="skill-tag">Max/MSP</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">AI/ML</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact__background">
+            <div class="gradient-mesh"></div>
+        </div>
+        <div class="contact__container">
+            <h2 class="contact-title scramble-text">
+                <span class="logo-char" data-char="К">К</span>
+                <span class="logo-char" data-char="о">о</span>
+                <span class="logo-char" data-char="н">н</span>
+                <span class="logo-char" data-char="т">т</span>
+                <span class="logo-char" data-char="а">а</span>
+                <span class="logo-char" data-char="к">к</span>
+                <span class="logo-char" data-char="т">т</span>
+                <span class="logo-char" data-char="ы">ы</span>
+            </h2>
+            <div class="contact-socials">
+                <a href="https://www.instagram.com/shoodyaskaz/" class="social-link" data-social="instagram" target="_blank" rel="noopener">
+                    <span>instagram</span>
+                </a>
+                <a href="https://t.me/SkazkaDoosh" class="social-link" data-social="telegram" target="_blank" rel="noopener">
+                    <span>telegram</span>
+                </a>
+                <a href="https://vk.com/skazkadoosh" class="social-link" data-social="vk" target="_blank" rel="noopener">
+                    <span>vk</span>
+                </a>
+                <span class="social-link social-link--disabled" data-social="github">
+                    <span>github</span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__content">
+            <span class="footer-text">© 2026 Евгений Аксенов. Все права защищены.</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
